@@ -1,5 +1,5 @@
 console.log("Jehovah died LOL");
-
+//magic
 var x = 10;
 
 if (x - x / 2 >= 5) {

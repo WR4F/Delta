@@ -3,7 +3,7 @@ console.log("Jehovah died LOL");
 var x = 10;
 
 if (x - x / 2 >= 5) {
-	console.log("Works.");
+	console.log("HORSE.");
 } else {
 	console.log("Logic is broken in this reality");
 }

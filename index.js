@@ -1,5 +1,5 @@
-var cv = require('opencv');
-var robot = require("robotjs");
+var cv = require('opencv'); // OpenCV ported for node
+var robot = require("robotjs"); // Tools to control mouse
 
 var lowThresh = 10;
 var highThresh = 100;
@@ -35,7 +35,6 @@ try {
 				var out = new cv.Matrix(height, width);
 
 				im.convertGrayscale();
-				// im = im.crop(200, 200, 300, 300);
 				im_canny = im.copy();
 				im_canny.canny(lowThresh, highThresh);
 				im_canny.dilate(nIters);
@@ -64,7 +63,6 @@ try {
 						case 3:
 							out.drawContour(contours, i, GREEN);
 							robot.moveMouse(cgx, cgy + 80);
-							// robot.scrollMouse(10, "up");
 							break;
 						case 4:
 							out.drawContour(contours, i, WHITE);

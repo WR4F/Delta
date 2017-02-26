@@ -18,6 +18,7 @@ var BLUE = [255, 0, 0]; // B, G, R
 var WHITE = [255, 255, 255]; // B, G, R
 
 try {
+	// Opens the window that shows everything processed
 	var camera = new cv.VideoCapture(0);
 	var window = new cv.NamedWindow('Video', 0)
 
@@ -40,7 +41,8 @@ try {
 				im_canny.dilate(nIters);
 
 				contours = im_canny.findContours();
-
+				
+				// Checks through the image for countouring and to set location of + crosshairs
 				for (i = 0; i < contours.size(); i++) {
 					if (contours.area(i) < minArea) continue;
 
@@ -49,13 +51,11 @@ try {
 						var cgx = Math.round(moments.m10 / moments.m00);
 						var cgy = Math.round(moments.m01 / moments.m00);
 
-						// console.log("x: " + cgx + ", y: " + cgy);
-
 						out.drawContour(contours, i, RED, thickness, lineType, maxLevel, [0, 0]);
 						out.line([cgx - 5, cgy], [cgx + 5, cgy], BLUE);
 						out.line([cgx, cgy - 5], [cgx, cgy + 5], BLUE);
 					}
-
+					
 					var arcLength = contours.arcLength(i, true);
 					contours.approxPolyDP(i, 0.05 * arcLength, true);
 
